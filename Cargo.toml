@@ -1,0 +1,39 @@
+[package]
+name = "bevy-mobile-starter"
+description = "A lightweight Bevy UI starter for Android and iOS mobile apps"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/shiipou/bevy-mobile-starter"
+
+[lib]
+name = "bevy_mobile_starter"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[[bin]]
+name = "bevy-mobile-starter"
+path = "src/main.rs"
+
+[features]
+default = []
+android = ["bevy/android-native-activity"]
+
+[dependencies]
+bevy = { version = "0.19", default-features = false, features = [
+  "ui",
+  "bevy_scene",
+] }
+
+[target.'cfg(target_os = "android")'.dependencies]
+android_logger = "0.15"
+log = "0.4"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 1

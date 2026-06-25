@@ -1,0 +1,15 @@
+/target
+/.cargo/config.toml
+*.apk
+*.ipa
+*.aab
+*.keystore
+*.jks
+/build
+/android/.gradle
+/android/app/build
+/android/local.properties
+/ios/build
+/ios/*.xcworkspace
+/ios/Pods
+.DS_Store
